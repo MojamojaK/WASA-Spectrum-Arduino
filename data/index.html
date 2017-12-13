@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Spectrum</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+		<link href="favicon.ico" rel="shortcut icon" />
+		<link href='style.css' rel='stylesheet'/>
+		<script type="text/javascript" src="spectrum_script.js"></script>
+	</head>
+	<body>
+		<div id='main_wrapper'>
+			<div id='servo1' class='main_inner vert_wrapper'>
+				<div id='rud' class='vert_inner sub_vert_inner cursor' style='height:10%' onclick='socketRequest(1)'> Rudder </div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w33' id='ind11' onclick='setValueType(1, 1)'>MIN</div>
+					<div class='hori_inner w33' id='ind12' onclick='setValueType(1, 2)'>NEU</div>
+					<div class='hori_inner w33' id='ind13' onclick='setValueType(1, 3)'>MAX</div>
+				</div>
+				<div class='vert_inner sub_vert_inner hori_wrapper'>
+					<div class='hori_inner w33' id='set1'>-500</div>
+					<div class='hori_inner w33' id='set2'>0</div>
+					<div class='hori_inner w33' id='set3'>500</div>
+				</div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w50' id='tsm10' onclick='socketSetTestMode(1, 0)'>WRITE</div>
+					<div class='hori_inner w50' id='tsm11' onclick='socketSetTestMode(1, 1)'>TEST</div>
+				</div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w25' id='ctr1-10' onclick='changeTryRange(1, -10)'>-1.0</div>
+					<div class='hori_inner w25' id='ctr1-1'  onclick='changeTryRange(1, -1)'>-0.1</div>
+					<div class='hori_inner w25' id='ctr11'   onclick='changeTryRange(1, 1)'>+0.1</div>
+					<div class='hori_inner w25' id='ctr110'  onclick='changeTryRange(1, 10)'>+1.0</div>
+				</div>
+				<div class='vert_inner sub_vert_inner'><input type='number' class='input_box' id='try1'></div>
+				<div class='vert_inner sub_vert_inner cursor' id='vst1' onclick='setValue(1)'> SET </div>
+				<div class='vert_inner sub_vert_inner cursor' id='rbt1' onclick='socketRebootServo(1)'> REBOOT </div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w33' id='tqm10' onclick='socketSetTorqueMode(1, 0)'>OFF</div>
+					<div class='hori_inner w33' id='tqm11' onclick='socketSetTorqueMode(1, 1)'>ON</div>
+					<div class='hori_inner w33' id='tqm12' onclick='socketSetTorqueMode(1, 2)'>BREAK</div>
+				</div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w50' id='swp11' onclick='socketDoSweep(1, 1)'>SLOW</div>
+					<div class='hori_inner w50' id='swp12' onclick='socketDoSweep(1, 2)'>FAST</div>
+				</div>
+			</div>
+			<div id='servo2' class='main_inner vert_wrapper'>
+				<div id='ele' class='vert_inner sub_vert_inner cursor' style='height:10%' onclick='socketRequest(1)'> Elevator </div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w33' id='ind21' onclick='setValueType(2, 1)'>MIN</div>
+					<div class='hori_inner w33' id='ind22' onclick='setValueType(2, 2)'>NEU</div>
+					<div class='hori_inner w33' id='ind23' onclick='setValueType(2, 3)'>MAX</div>
+				</div>
+				<div class='vert_inner sub_vert_inner hori_wrapper'>
+					<div class='hori_inner w33' id='set5'>-500</div>
+					<div class='hori_inner w33' id='set6'>0</div>
+					<div class='hori_inner w33' id='set7'>500</div>
+				</div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w50' id='tsm20' onclick='socketSetTestMode(2, 0)'>WRITE</div>
+					<div class='hori_inner w50' id='tsm21' onclick='socketSetTestMode(2, 1)'>TEST</div>
+				</div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w25' id='ctr2-10' onclick='changeTryRange(2, -10)'>-1.0</div>
+					<div class='hori_inner w25' id='ctr2-1'  onclick='changeTryRange(2, -1)'>-0.1</div>
+					<div class='hori_inner w25' id='ctr21' 	 onclick='changeTryRange(2, 1)'>+0.1</div>
+					<div class='hori_inner w25' id='ctr210'  onclick='changeTryRange(2, 10)'>+1.0</div>
+				</div>
+				<div class='vert_inner sub_vert_inner'><input type='number' class='input_box' id='try2'></div>
+				<div class='vert_inner sub_vert_inner cursor' id='vst2' onclick='setValue(2)'> SET </div>
+				<div class='vert_inner sub_vert_inner cursor' id='rbt2' onclick='socketRebootServo(2)'> REBOOT </div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w33' id='tqm20' onclick='socketSetTorqueMode(2, 0)'>OFF</div>
+					<div class='hori_inner w33' id='tqm21' onclick='socketSetTorqueMode(2, 1)'>ON</div>
+					<div class='hori_inner w33' id='tqm22' onclick='socketSetTorqueMode(2, 2)'>BREAK</div>
+				</div>
+				<div class='vert_inner sub_vert_inner hori_wrapper cursor'>
+					<div class='hori_inner w50' id='swp21' onclick='socketDoSweep(2, 1)'>SLOW</div>
+					<div class='hori_inner w50' id='swp22' onclick='socketDoSweep(2, 2)'>FAST</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
