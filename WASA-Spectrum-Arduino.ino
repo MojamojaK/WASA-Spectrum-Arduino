@@ -5,6 +5,10 @@
 // 2017年以前は 4MB が主流でしたので気をつけて下さい
 // パソコン再起動時に設定がリセットされるので気をつけて
 
+// ESP8266ボードのバージョンは 2.4.0, 2.4.1 で動作確認済み
+// WebSocket のライブラリは https://github.com/Links2004/arduinoWebSockets/releases でダウンロードして下さい
+// WebSocket のライブラリバージョンは 2.1.0 で動作確認済み
+
 #include <SoftwareSerial.h>
 #include <ESP8266WiFi.h>
 #include <WebSocketsServer.h>
@@ -24,7 +28,7 @@ SoftwareSerial ControlSerial(ARD_COMM_RX, ARD_COMM_TX); // RX | TX
 const char* ssid = "Spectrum";
 const char* password = "123456789";
 
-ESP8266WebServer server = ESP8266WebServer(80);
+ESP8266WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
 uint8_t socket_packet[128];
@@ -117,6 +121,7 @@ void setup() {
   WiFi.setAutoReconnect(false);
   WiFi.disconnect();
   WiFi.softAP(ssid, password);
+  Serial.println(WiFi.RSSI());
 
   send_log(String(F("IP Address:")) + IPtoString(WiFi.softAPIP()) + F("\n")); // 23
 
